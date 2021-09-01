@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:imdb/Components/authButton.dart';
+import '../../../Components/authRoot.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import '../../../config.dart';
-import '../loginPage.dart';
-import '../registerPage.dart';
+import '../../Auth/authPageRoot.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -23,8 +22,8 @@ class WelcomePage extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.9,
                         child: Image(
                           image: Svg('assets/svg/movie_fldd.svg'),
-                          height: 250,
-                          width: 250,
+                          height: 300,
+                          width: 300,
                         ),
                       ),
                     ),

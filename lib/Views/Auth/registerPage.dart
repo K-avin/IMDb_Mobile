@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:imdb/Components/authButton.dart';
 import 'package:imdb/Components/authPasswordFild.dart';
 import 'package:imdb/Components/authinputFilds.dart';
-
+import 'package:imdb/Views/Pages/homePage.dart';
 import '../../config.dart';
-import '../homePage.dart';
 
 class RegisterPage extends StatefulWidget {
   @override

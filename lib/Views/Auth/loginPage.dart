@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:imdb/Components/authButton.dart';
-import 'package:imdb/Components/authPasswordFild.dart';
-import 'package:imdb/Components/authinputFilds.dart';
 import 'package:imdb/Views/Auth/registerPage.dart';
-import 'package:imdb/Views/homePage.dart';
-
+import 'package:imdb/Views/Pages/homePage.dart';
 import '../../config.dart';
+import '../../Components/authRoot.dart';
 
 class SignInPage extends StatefulWidget {
   @override

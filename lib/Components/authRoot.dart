@@ -1,3 +1,4 @@
-export './authButton.dart';
-export './authinputFilds.dart';
-export './authPasswordFild.dart';
+export 'authButton.dart';
+
+export 'authPasswordFild.dart';
+export 'authinputFilds.dart';

@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:imdb/Data/detailsFile.dart';
+import 'package:imdb/Views/Actors/actorsProfile.dart';
 import 'package:imdb/config.dart';
 
 class DetailMoviePage extends StatefulWidget {
@@ -152,14 +154,22 @@ class _DetailMoviePageState extends State<DetailMoviePage> {
                   scrollDirection: Axis.horizontal,
                   itemCount: widget.movie.casts.length,
                   itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.only(right: 15),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProfilePage(),
+                          ),
+                        );
+                      },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
                             height: 70,
                             width: 70,
+                            margin: EdgeInsets.only(right: 15),
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(

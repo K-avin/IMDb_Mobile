@@ -1,8 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:imdb/Data/detailsFile.dart';
-import 'package:imdb/Views/detailsPage.dart';
 import 'package:imdb/config.dart';
+
+import 'detailsPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
