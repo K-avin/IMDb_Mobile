@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:imdb/Views/homePage.dart';
+import 'Views/Auth/Welcome/welcomePage.dart';
+import 'config.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,8 +13,9 @@ class MyApp extends StatelessWidget {
       title: 'Moveez',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
+        scaffoldBackgroundColor: kBackgroundColor,
       ),
-      home: HomePage(),
+      home: WelcomePage(),
     );
   }
 }

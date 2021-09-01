@@ -56,19 +56,21 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                    'assets/images/iron-man-poster.jpg',
+                    'assets/images/arrival-poster.jpg',
                   ),
                   fit: BoxFit.cover,
+                  colorFilter: new ColorFilter.mode(
+                      secondaryColor.withOpacity(0.6), BlendMode.dstATop),
                 ),
               ),
               child: Container(
-                padding: const EdgeInsets.only(bottom: 60),
+                padding: const EdgeInsets.only(bottom: 30),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
                       secondaryColor,
-                      secondaryColor.withOpacity(0.9),
-                      secondaryColor.withOpacity(0.5),
+                      secondaryColor.withOpacity(0.8),
+                      secondaryColor.withOpacity(0.1),
                       Colors.transparent,
                     ],
                     begin: Alignment.bottomCenter,
@@ -83,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                       alignment: Alignment.center,
                       child: Container(
                         child: Text(
-                          'Iron Man',
+                          'Arrival',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 32,
@@ -142,7 +144,7 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 padding: const EdgeInsets.only(left: 8),
                 child: Text(
-                  "Popular Movie",
+                  "Popular Movies",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -207,64 +209,64 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             // Now Showing
-            // Align(
-            //   alignment: Alignment.centerLeft,
-            //   child: Container(
-            //     padding: const EdgeInsets.only(top: 15),
-            //     child: Text(
-            //       "Now Showing",
-            //       style: TextStyle(
-            //         color: white,
-            //         fontSize: 20,
-            //         fontWeight: FontWeight.bold,
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // Container(
-            //   height: 170,
-            //   margin: EdgeInsets.only(top: 10),
-            //   child: ListView.builder(
-            //     scrollDirection: Axis.horizontal,
-            //     itemCount: nowShowing.length,
-            //     itemBuilder: (context, index) {
-            //       return GestureDetector(
-            //         child: Column(
-            //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //           crossAxisAlignment: CrossAxisAlignment.start,
-            //           children: [
-            //             Container(
-            //               height: 150,
-            //               width: 110,
-            //               margin: EdgeInsets.only(right: 10),
-            //               decoration: BoxDecoration(
-            //                 borderRadius: BorderRadius.circular(12),
-            //                 image: DecorationImage(
-            //                   fit: BoxFit.fill,
-            //                   image: AssetImage(
-            //                     nowShowing[index].imgPoster,
-            //                   ),
-            //                 ),
-            //               ),
-            //             ),
-            //             Container(
-            //               width: 110,
-            //               child: Text(
-            //                 nowShowing[index].title,
-            //                 style: TextStyle(
-            //                   color: white,
-            //                   fontSize: 17,
-            //                 ),
-            //                 maxLines: 1,
-            //                 overflow: TextOverflow.clip,
-            //               ),
-            //             )
-            //           ],
-            //         ),
-            //       );
-            //     },
-            //   ),
-            // ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                padding: const EdgeInsets.only(left: 8, top: 15),
+                child: Text(
+                  "Trending Movies",
+                  style: TextStyle(
+                    color: white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              height: 170,
+              margin: EdgeInsets.only(top: 10, left: 8),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: nowShowing.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 150,
+                          width: 110,
+                          margin: EdgeInsets.only(right: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage(
+                                nowShowing[index].imgPoster,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 110,
+                          child: Text(
+                            nowShowing[index].title,
+                            style: TextStyle(
+                              color: white,
+                              fontSize: 17,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.clip,
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
