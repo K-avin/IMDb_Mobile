@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Views/Pages/homePage.dart';
+import 'package:imdb/Views/Auth/loginPage.dart';
+import 'package:imdb/Views/Pages/homePage.dart';
+import 'Views/Auth/Welcome/welcomePage.dart';
 import 'config.dart';
 
 void main() {

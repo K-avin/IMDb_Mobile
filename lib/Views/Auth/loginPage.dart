@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:imdb/API%20Requests/AuthAPI.dart';
 import 'package:imdb/Views/Auth/registerPage.dart';
 import 'package:imdb/Views/Pages/homePage.dart';
 import '../../config.dart';
@@ -12,6 +13,20 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   bool isPasswordVisible = true;
+  bool isLoading = false;
+
+  void signInFunction() {
+    setState(() {
+      isLoading = true;
+    });
+
+    postSignIn(context);
+
+    setState(() {
+      isLoading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,15 +119,8 @@ class _SignInPageState extends State<SignInPage> {
                       height: 20,
                     ),
                     MyTextButton(
-                      buttonName: 'Sign In',
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (context) => HomePage(),
-                          ),
-                        );
-                      },
+                      buttonName: isLoading ? 'Going in' : 'Sign In',
+                      onTap: signInFunction,
                       bgColor: Colors.white,
                       textColor: Colors.black87,
                     ),
