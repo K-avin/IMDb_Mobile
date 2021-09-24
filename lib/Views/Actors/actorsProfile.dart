@@ -147,60 +147,60 @@ class _ProfilePageState extends State<ProfilePage> {
                               fontSize: 18,
                               fontWeight: FontWeight.bold),
                         ),
-                        Container(
-                          height: 240,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: popularMovie.length,
-                            itemBuilder: (context, index) {
-                              return GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => DetailMoviePage(
-                                        popularMovie[index],
-                                      ),
-                                    ),
-                                  );
-                                },
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      height: 160,
-                                      width: 110,
-                                      margin: EdgeInsets.only(right: 10),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        image: DecorationImage(
-                                          fit: BoxFit.fill,
-                                          image: AssetImage(
-                                            popularMovie[index].imgPoster,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      width: 125,
-                                      child: Text(
-                                        popularMovie[index].title,
-                                        style: TextStyle(
-                                          color: white,
-                                          fontSize: 15,
-                                        ),
-                                        maxLines: 1,
-                                        overflow: TextOverflow.clip,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              );
-                            },
-                          ),
-                        ),
+                        // Container(
+                        //   height: 240,
+                        //   child: ListView.builder(
+                        //     scrollDirection: Axis.horizontal,
+                        //     itemCount: popularMovie.length,
+                        //     itemBuilder: (context, index) {
+                        //       return GestureDetector(
+                        //         onTap: () {
+                        //           Navigator.push(
+                        //             context,
+                        //             MaterialPageRoute(
+                        //               builder: (context) => DetailMoviePage(
+                        //                 popularMovie[index],
+                        //               ),
+                        //             ),
+                        //           );
+                        //         },
+                        //         child: Column(
+                        //           mainAxisAlignment:
+                        //               MainAxisAlignment.spaceEvenly,
+                        //           crossAxisAlignment: CrossAxisAlignment.start,
+                        //           children: [
+                        //             Container(
+                        //               height: 160,
+                        //               width: 110,
+                        //               margin: EdgeInsets.only(right: 10),
+                        //               decoration: BoxDecoration(
+                        //                 borderRadius: BorderRadius.circular(10),
+                        //                 image: DecorationImage(
+                        //                   fit: BoxFit.fill,
+                        //                   image: AssetImage(
+                        //                     popularMovie[index].imgPoster,
+                        //                   ),
+                        //                 ),
+                        //               ),
+                        //             ),
+                        //             Container(
+                        //               width: 125,
+                        //               child: Text(
+                        //                 popularMovie[index].title,
+                        //                 style: TextStyle(
+                        //                   color: white,
+                        //                   fontSize: 15,
+                        //                 ),
+                        //                 maxLines: 1,
+                        //                 overflow: TextOverflow.clip,
+                        //               ),
+                        //             )
+                        //           ],
+                        //         ),
+                        //       );
+                        //     },
+                        //   ),
+                        // ),
                         // SizedBox(
                         //   height: 20,
                         // ),
