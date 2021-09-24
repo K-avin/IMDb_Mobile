@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:imdb/API%20Requests/AuthAPI.dart';
 import 'package:imdb/Views/Auth/registerPage.dart';
-import 'package:imdb/Views/Pages/homePage.dart';
 import '../../config.dart';
 import '../../Components/authRoot.dart';
 

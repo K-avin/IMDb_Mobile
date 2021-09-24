@@ -1,6 +1,5 @@
 // Movie Details
 import 'package:flutter/material.dart';
-import './CastModel.dart';
 
 class Movie {
   final String title;

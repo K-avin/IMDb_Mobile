@@ -15,7 +15,6 @@ class _HomePageState extends State<HomePage> {
   Future<List<Movie>> popularMovies;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     popularMovies = getMoviesData();
   }

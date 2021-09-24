@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:imdb/Data/detailsFile.dart';
 import 'package:imdb/Views/Pages/homePage.dart';
-import '../Constant/constants.dart';
 
 Future postSignIn(context) async {
   Movie movie;

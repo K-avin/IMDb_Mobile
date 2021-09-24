@@ -1,11 +1,9 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:imdb/Data/detailsFile.dart';
 import '../Constant/constants.dart';
 
 Future<List<Movie>> getMoviesData() async {
-  Movie movie;
   String url =
       baseUrl + 'movie/popular?api_key=' + apiKey + '&language=en-US&page=1';
 

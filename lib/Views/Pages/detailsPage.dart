@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:imdb/Data/detailsFile.dart';
-import 'package:imdb/Views/Actors/actorsProfile.dart';
 import 'package:imdb/config.dart';
 
+// ignore: must_be_immutable
 class DetailMoviePage extends StatefulWidget {
   Movie movie;
 

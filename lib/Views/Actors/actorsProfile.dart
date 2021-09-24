@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:imdb/Data/detailsFile.dart';
-import 'package:imdb/Views/Pages/detailsPage.dart';
 import 'package:imdb/config.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
