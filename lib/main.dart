@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:imdb/Views/Auth/loginPage.dart';
+import 'package:imdb/Views/Pages/homePage.dart';
 import 'Views/Auth/Welcome/welcomePage.dart';
 import 'config.dart';
 
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blueGrey,
         scaffoldBackgroundColor: kBackgroundColor,
       ),
-      home: WelcomePage(),
+      home: HomePage(),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:imdb/Data/detailsFile.dart';
 import 'package:imdb/config.dart';
+import '../../API Requests/PopularMovies.dart';
 
 import 'detailsPage.dart';
 
@@ -11,6 +12,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Future<List<Movie>> popularMovies;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    popularMovies = getMoviesData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -158,116 +167,185 @@ class _HomePageState extends State<HomePage> {
             Container(
               height: 240,
               margin: EdgeInsets.only(top: 10, left: 8),
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: popularMovie.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailMoviePage(
-                            popularMovie[index],
-                          ),
-                        ),
-                      );
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 200,
-                          width: 130,
-                          margin: EdgeInsets.only(right: 15),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: AssetImage(
-                                popularMovie[index].imgPoster,
+              child: FutureBuilder<List<Movie>>(
+                future: popularMovies,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    List<Movie> data = snapshot.data;
+                    return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: data.length,
+                      itemBuilder: (BuildContext context, index) {
+                        // print(data[index].title);
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DetailMoviePage(
+                                      data[index],
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                height: 200,
+                                width: 130,
+                                margin: EdgeInsets.only(right: 15),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: NetworkImage(
+                                      'https://image.tmdb.org/t/p/w500' +
+                                          data[index].imgPoster,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
-                        Container(
-                          width: 140,
-                          child: Text(
-                            popularMovie[index].title,
-                            style: TextStyle(
-                              color: white,
-                              fontSize: 17,
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.clip,
-                          ),
-                        )
-                      ],
-                    ),
-                  );
+                            Container(
+                              width: 140,
+                              child: Text(
+                                data[index].title,
+                                style: TextStyle(
+                                  color: white,
+                                  fontSize: 17,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.clip,
+                              ),
+                            )
+                          ],
+                        );
+                      },
+                    );
+                  } else if (snapshot.hasError) {
+                    print(snapshot.error);
+                  }
+
+                  // By default, show a loading spinner.
+                  return const CircularProgressIndicator();
                 },
               ),
             ),
-            // Now Showing
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                padding: const EdgeInsets.only(left: 8, top: 15),
-                child: Text(
-                  "Trending Movies",
-                  style: TextStyle(
-                    color: white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              height: 170,
-              margin: EdgeInsets.only(top: 10, left: 8),
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: nowShowing.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 150,
-                          width: 110,
-                          margin: EdgeInsets.only(right: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: AssetImage(
-                                nowShowing[index].imgPoster,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 110,
-                          child: Text(
-                            nowShowing[index].title,
-                            style: TextStyle(
-                              color: white,
-                              fontSize: 17,
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.clip,
-                          ),
-                        )
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
+            // Container(
+            //   height: 240,
+            //   margin: EdgeInsets.only(top: 10, left: 8),
+            //   child: ListView.builder(
+            //     scrollDirection: Axis.horizontal,
+            //     itemCount: popularMovie.length,
+            //     itemBuilder: (context, index) {
+            //       return GestureDetector(
+            // onTap: () {
+            //   Navigator.push(
+            //     context,
+            //     MaterialPageRoute(
+            //       builder: (context) => DetailMoviePage(
+            //         popularMovie[index],
+            //       ),
+            //     ),
+            //   );
+            // },
+            // child: Column(
+            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: [
+            //     Container(
+            //       height: 200,
+            //       width: 130,
+            //       margin: EdgeInsets.only(right: 15),
+            //       decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(12),
+            //         image: DecorationImage(
+            //           fit: BoxFit.fill,
+            //           image: AssetImage(
+            //             popularMovie[index].imgPoster,
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //     Container(
+            //       width: 140,
+            //       child: Text(
+            //         popularMovie[index].title,
+            //         style: TextStyle(
+            //           color: white,
+            //           fontSize: 17,
+            //         ),
+            //         maxLines: 1,
+            //         overflow: TextOverflow.clip,
+            //       ),
+            //     )
+            //   ],
+            // ),
+            //       );
+            //     },
+            //   ),
+            // ),
+            // // Now Showing
+            // Align(
+            //   alignment: Alignment.centerLeft,
+            //   child: Container(
+            //     padding: const EdgeInsets.only(left: 8, top: 15),
+            //     child: Text(
+            //       "Trending Movies",
+            //       style: TextStyle(
+            //         color: white,
+            //         fontSize: 20,
+            //         fontWeight: FontWeight.bold,
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // Container(
+            //   height: 170,
+            //   margin: EdgeInsets.only(top: 10, left: 8),
+            //   child: ListView.builder(
+            //     scrollDirection: Axis.horizontal,
+            //     itemCount: nowShowing.length,
+            //     itemBuilder: (context, index) {
+            //       return GestureDetector(
+            //         child: Column(
+            //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //           crossAxisAlignment: CrossAxisAlignment.start,
+            //           children: [
+            //             Container(
+            //               height: 150,
+            //               width: 110,
+            //               margin: EdgeInsets.only(right: 10),
+            //               decoration: BoxDecoration(
+            //                 borderRadius: BorderRadius.circular(12),
+            //                 image: DecorationImage(
+            //                   fit: BoxFit.fill,
+            //                   image: AssetImage(
+            //                     nowShowing[index].imgPoster,
+            //                   ),
+            //                 ),
+            //               ),
+            //             ),
+            //             Container(
+            //               width: 110,
+            //               child: Text(
+            //                 nowShowing[index].title,
+            //                 style: TextStyle(
+            //                   color: white,
+            //                   fontSize: 17,
+            //                 ),
+            //                 maxLines: 1,
+            //                 overflow: TextOverflow.clip,
+            //               ),
+            //             )
+            //           ],
+            //         ),
+            //       );
+            //     },
+            //   ),
+            // ),
           ],
         ),
       ),

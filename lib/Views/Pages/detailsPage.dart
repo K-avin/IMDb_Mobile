@@ -5,7 +5,7 @@ import 'package:imdb/Views/Actors/actorsProfile.dart';
 import 'package:imdb/config.dart';
 
 class DetailMoviePage extends StatefulWidget {
-  final Movie movie;
+  Movie movie;
 
   DetailMoviePage(this.movie);
   @override
@@ -45,9 +45,8 @@ class _DetailMoviePageState extends State<DetailMoviePage> {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(
-                    widget.movie.imgPoster,
-                  ),
+                  image: NetworkImage('https://image.tmdb.org/t/p/w500' +
+                      widget.movie.imgPoster),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -135,64 +134,64 @@ class _DetailMoviePageState extends State<DetailMoviePage> {
                 ),
               ),
             ),
-            if (widget.movie.casts.length > 0) ...[
-              Padding(
-                padding: const EdgeInsets.only(left: 15, top: 15),
-                child: Text(
-                  "Cast",
-                  style: TextStyle(
-                    color: white.withOpacity(0.7),
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Container(
-                height: 100,
-                padding: EdgeInsets.only(left: 15, top: 10),
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: widget.movie.casts.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ProfilePage(),
-                          ),
-                        );
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            height: 70,
-                            width: 70,
-                            margin: EdgeInsets.only(right: 15),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage(
-                                  widget.movie.casts[index].image,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Text(
-                            widget.movie.casts[index].name,
-                            style: TextStyle(
-                              color: white.withOpacity(0.7),
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              )
-            ]
+            // if (widget.movie.casts.length > 0) ...[
+            //   Padding(
+            //     padding: const EdgeInsets.only(left: 15, top: 15),
+            //     child: Text(
+            //       "Cast",
+            //       style: TextStyle(
+            //         color: white.withOpacity(0.7),
+            //         fontSize: 22,
+            //         fontWeight: FontWeight.bold,
+            //       ),
+            //     ),
+            //   ),
+            //   Container(
+            //     height: 100,
+            //     padding: EdgeInsets.only(left: 15, top: 10),
+            //     child: ListView.builder(
+            //       scrollDirection: Axis.horizontal,
+            //       itemCount: widget.movie.casts.length,
+            //       itemBuilder: (context, index) {
+            //         return GestureDetector(
+            //           onTap: () {
+            //             Navigator.push(
+            //               context,
+            //               MaterialPageRoute(
+            //                 builder: (context) => ProfilePage(),
+            //               ),
+            //             );
+            //           },
+            //           child: Column(
+            //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //             children: [
+            //               Container(
+            //                 height: 70,
+            //                 width: 70,
+            //                 margin: EdgeInsets.only(right: 15),
+            //                 decoration: BoxDecoration(
+            //                   shape: BoxShape.circle,
+            //                   image: DecorationImage(
+            //                     fit: BoxFit.cover,
+            //                     image: AssetImage(
+            //                       widget.movie.casts[index].image,
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ),
+            //               Text(
+            //                 widget.movie.casts[index].name,
+            //                 style: TextStyle(
+            //                   color: white.withOpacity(0.7),
+            //                 ),
+            //               )
+            //             ],
+            //           ),
+            //         );
+            //       },
+            //     ),
+            //   )
+            // ]
           ],
         ),
       ),
