@@ -4,12 +4,14 @@ import 'package:http/http.dart' as http;
 import 'package:imdb/Data/detailsFile.dart';
 import '../Constant/constants.dart';
 
-Future<List<Movie>> getMoviesData(url) async {
+Future<Movie> getSingleMovie(url) async {
   final response = await http.get(url, headers: {});
 
   if (response.statusCode == 200) {
-    List responseData = jsonDecode(response.body)['results'];
-    return responseData.map((data) => new Movie.fromJson(data)).toList();
+    var responseData = jsonDecode(response.body)['results'][0];
+    var singleMovie = Movie.fromJson(responseData);
+
+    return singleMovie;
   } else {
     throw Exception('Failed to load album');
   }
