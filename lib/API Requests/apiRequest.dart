@@ -1,12 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:imdb/Data/detailsFile.dart';
-import '../Constant/constants.dart';
 
-Future<List<Movie>> getMoviesData() async {
-  String url =
-      baseUrl + 'movie/popular?api_key=' + apiKey + '&language=en-US&page=1';
-
+Future<List<Movie>> getMoviesData(url) async {
   final response = await http.get(url, headers: {});
 
   if (response.statusCode == 200) {

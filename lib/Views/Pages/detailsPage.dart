@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:imdb/Data/detailsFile.dart';
 import 'package:imdb/config.dart';
 
-// ignore: must_be_immutable
 class DetailMoviePage extends StatefulWidget {
   Movie movie;
 
